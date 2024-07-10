@@ -53,3 +53,10 @@ export const getEvolution = async (id: number = 1) => {
     url: `https://pokeapi.co/api/v2/evolution-chain/${id}/`,
   });
 };
+
+export const getAllPokemon = async () => {
+  return await axios({
+    method: "get",
+    url: "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0",
+  });
+};
