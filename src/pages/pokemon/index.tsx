@@ -82,7 +82,6 @@ const Pokemon = () => {
       setDataStats(res.data.stats);
     });
   }, [pokeId]);
-  console.log(pokeId, "pokeId");
 
   return (
     <div className="w-2/4 mx-auto mt-20">

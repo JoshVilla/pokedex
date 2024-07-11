@@ -4,11 +4,8 @@ import LoadingLogo from "/pokeball.png";
 import { getAllPokemon } from "../../utils/api";
 import { getPokeId } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
+import { IPokeData } from "../../types";
 
-interface IPokeData {
-  name: string;
-  url: string;
-}
 const SplashScreen = () => {
   const navigate = useNavigate();
   const [pokeData, setPokeData] = useState<any>([]);

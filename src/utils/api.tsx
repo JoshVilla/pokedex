@@ -26,8 +26,6 @@ export const getPokemon = async (value: string = "") => {
 };
 
 export const getPokemonTypes = async (value: number = 1) => {
-  console.log(value, "value");
-
   return await axios({
     method: "get",
     url: `https://pokeapi.co/api/v2/type/${value}`,

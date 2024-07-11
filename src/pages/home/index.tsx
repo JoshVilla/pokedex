@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { findPokemon, getPokemons } from "../../utils/api";
 import PokeCard from "../../components/pokeCard";
 import { Link } from "react-router-dom";
+import { IPokeData } from "../../types";
 
 interface IPokeList {
   name: string;
@@ -9,10 +10,10 @@ interface IPokeList {
 }
 const Home = () => {
   const pokemonList = JSON.parse(localStorage.getItem("pokemons") || "[]");
-  const [pokeName, setPokeName] = useState("");
-  const [data, setData] = useState([]);
-  const [prevPageUrl, setPrevPageUrl] = useState("");
-  const [nextPageUrl, setNextPageUrl] = useState("");
+  const [pokeName, setPokeName] = useState<string>("");
+  const [data, setData] = useState<IPokeData[]>([]);
+  const [prevPageUrl, setPrevPageUrl] = useState<string>("");
+  const [nextPageUrl, setNextPageUrl] = useState<string>("");
   const [suggestions, setSuggestions] = useState<IPokeList[]>([]);
 
   const gSuggestions = useMemo(() => {
@@ -100,7 +101,7 @@ const Home = () => {
       </div>
       <div className="mt-20 w-4/5 mx-auto p-4">
         <div className="flex flex-wrap gap-10 justify-evenly">
-          {data.map((items: any, index) => (
+          {data.map((items: IPokeData, index) => (
             <Link to={`/pokemon/${items.name}`}>
               <PokeCard key={index} data={items} id={index + 1} />
             </Link>

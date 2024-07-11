@@ -3,18 +3,21 @@ import React, { useEffect, useState } from "react";
 import { capitalize } from "../../utils/helpers";
 import "./style.module.scss";
 import Pokeball from "/pokeball.png";
+import { IPokeData } from "../../types";
 type Props = {
-  data: any;
+  data: IPokeData;
   id: number;
 };
 
 const PokeCard = ({ data, id }: Props) => {
+  console.log(data, "pokeCard");
+
   const [pokeId, setPokeId] = useState(0);
   const getIdFromUrl = () => {
     const url = data.url;
     const match = url.match(/\/(\d+)\//);
     const number = match ? match[1] : null;
-    setPokeId(number);
+    setPokeId(Number(number));
   };
 
   useEffect(() => {
