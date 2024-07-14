@@ -111,7 +111,7 @@ const Home = () => {
           {prevPageUrl && (
             <div
               onClick={handlePrevPage}
-              className="border py-2 px-4  rounded-md"
+              className="border py-2 px-4  rounded-md cursor-pointer"
             >
               Previous
             </div>
@@ -119,7 +119,7 @@ const Home = () => {
           {nextPageUrl && (
             <div
               onClick={handleNextPage}
-              className="border rounded-md py-2 px-4"
+              className="border rounded-md py-2 px-4 cursor-pointer"
             >
               Next
             </div>
