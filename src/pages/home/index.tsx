@@ -20,12 +20,16 @@ const Home = () => {
     return pokemonList.filter((i: IPokeList) => i.name.startsWith(pokeName));
   }, [pokeName]);
 
+  const fetchDataAndPage = (data: any) => {
+    setData(data.results);
+    setPrevPageUrl(data.previous || "");
+    setNextPageUrl(data.next);
+  };
+
   useEffect(() => {
     getPokemons().then((res) => {
       if (res) {
-        setData(res.data.results);
-        setPrevPageUrl(res.data.previous || "");
-        setNextPageUrl(res.data.next);
+        fetchDataAndPage(res.data);
       }
     });
   }, []);
@@ -33,9 +37,7 @@ const Home = () => {
   const handlePrevPage = () => {
     getPokemons(prevPageUrl).then((res) => {
       if (res) {
-        setData(res.data.results);
-        setPrevPageUrl(res.data.previous);
-        setNextPageUrl(res.data.next);
+        fetchDataAndPage(res.data);
       }
     });
   };
@@ -43,9 +45,7 @@ const Home = () => {
   const handleNextPage = () => {
     getPokemons(nextPageUrl).then((res) => {
       if (res) {
-        setData(res.data.results);
-        setPrevPageUrl(res.data.previous || "");
-        setNextPageUrl(res.data.next);
+        fetchDataAndPage(res.data);
       }
     });
   };
